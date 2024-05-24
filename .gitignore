@@ -1,0 +1,30 @@
+# Ignore compiled Python files
+*.pyc
+
+# Ignore environment-specific files
+.env
+
+# Ignore virtual environment folders
+venv/
+env/
+
+# Ignore image files
+*.jpg
+*.png
+
+# Ignore IDE files
+.idea/
+.vscode/
+
+# Ignore compiled files
+*.exe
+*.dll
+*.so
+*.out
+
+# Ignore build/main directories
+build/
+main/
+
+# Ignore PyInstaller spec file
+main.spec

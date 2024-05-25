@@ -1,3 +1,4 @@
+import sys
 import time
 import cv2
 import pytesseract
@@ -7,9 +8,6 @@ import argparse
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from PIL import Image
-
-# Set the path to the Tesseract executable
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 
 def load_image(image_path):
@@ -127,10 +125,15 @@ def main():
     parser = argparse.ArgumentParser(description='Process and compress images from a folder.')
     parser.add_argument('input_folder', type=str, help='Path to the input folder')
     parser.add_argument('output_folder', type=str, help='Path to the output folder')
+    parser.add_argument('tesseract_path', type=str, help='Path to the Tesseract executable')
     args = parser.parse_args()
 
     input_folder = args.input_folder
     output_folder = args.output_folder
+    tesseract_path = args.tesseract_path
+
+    # Set the Tesseract executable path
+    pytesseract.pytesseract.tesseract_cmd = tesseract_path
 
     # Process existing files in the input folder
     process_images_in_folder(input_folder, output_folder)
